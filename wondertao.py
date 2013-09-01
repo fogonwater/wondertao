@@ -1,5 +1,7 @@
 import random
 
+TEXT1, TEXT2 = "alice.txt", "tao.txt"
+
 def is_number(s):
     try:
         int(s)
@@ -27,7 +29,7 @@ def create_chain(file_paths):
                     word2 = current_word
     return markov_chain
 
-def construct_paragraph(markov_chain, word_count=30):
+def construct_paragraph(markov_chain, word_count=100):
     generated_sentence = ""
     word_tuple = random.choice(markov_chain.keys())
     w1 = word_tuple[0]
@@ -43,7 +45,7 @@ def construct_paragraph(markov_chain, word_count=30):
     return generated_sentence
 
 def main():
-    markov = create_chain( ("alice.txt", "tao.txt") )
+    markov = create_chain( (TEXT1, TEXT2) )
     paragraph = construct_paragraph(markov_chain = markov, word_count=900)
     lines = paragraph.split('.')
 
